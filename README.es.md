@@ -37,7 +37,7 @@ Requiere Node.js solo para compilar el CSS de Tailwind.
 npm install
 npm run build   # genera dist/styles.css (minificado)
 npm run watch   # recompila al editar
-npm test        # ejecuta los tests (Node 20+)
+npm test        # ejecuta los tests (Node 22+)
 ```
 
 `dist/styles.css` está incluido en el repositorio para poder publicar el sitio sin paso de compilación (por ejemplo, con GitHub Pages).
@@ -52,7 +52,7 @@ src/input.css       estilos propios + directivas de Tailwind
 tailwind.config.js  configuración de Tailwind
 dist/styles.css     CSS compilado
 tests/              tests (node:test + jsdom)
-.github/workflows/  CI: tests en Node 20 y 22, y comprobación de que dist/styles.css está al día
+.github/workflows/  CI: tests en Node 22 y 24, y comprobación de que dist/styles.css está al día
 ```
 
 ### Tests
@@ -65,7 +65,7 @@ tests/              tests (node:test + jsdom)
 - **Modelos y URL base:** listado automático de modelos, selector único, Ollama local, normalización de URL y avisos.
 - **Renderizado:** Markdown, protección de KaTeX y saneado de la salida del modelo (`marked` y `DOMPurify` se instalan en las mismas versiones que la página carga del CDN).
 
-La CI (`.github/workflows/ci.yml`) ejecuta los tests en Node 20 y 22 y recompila el CSS para comprobar que el `dist/styles.css` del repositorio coincide con el código: si añades una clase de Tailwind, ejecuta `npm run build` y sube el resultado.
+La CI (`.github/workflows/ci.yml`) ejecuta los tests en Node 22 y 24 y recompila el CSS para comprobar que el `dist/styles.css` del repositorio coincide con el código: si añades una clase de Tailwind, ejecuta `npm run build` y sube el resultado.
 
 ### Traducciones
 
