@@ -37,6 +37,7 @@ Node.js is only required to compile the Tailwind CSS.
 npm install
 npm run build   # generates dist/styles.css (minified)
 npm run watch   # rebuilds on change
+npm test        # runs the test suite (Node 20+)
 ```
 
 `dist/styles.css` is committed so the site can be published with no build step (for example, on GitHub Pages).
@@ -50,7 +51,21 @@ src/app.js          application logic and AI provider layer
 src/input.css       custom styles + Tailwind directives
 tailwind.config.js  Tailwind configuration
 dist/styles.css     compiled CSS
+tests/              test suite (node:test + jsdom)
+.github/workflows/  CI: tests on Node 20 and 22, and a check that dist/styles.css is up to date
 ```
+
+### Tests
+
+`npm test` boots the real `index.html`, `src/i18n.js` and `src/app.js` in [jsdom](https://github.com/jsdom/jsdom) with a fake `fetch`, so no network or API key is needed (about 6 seconds). It covers:
+
+- **Translations:** every key exists in both languages, placeholders match, no Spanish text leaks into the code, every inline handler and element id exists.
+- **Language:** English by default, live switching, remembered choice, and that the prompts sent to the model follow the language.
+- **Providers:** request format of Gemini, Anthropic and the OpenAI-compatible ones (OpenAI, OpenRouter, Groq, Grok, Ollama, other APIs), errors, retries, key storage.
+- **Models and base URL:** automatic model listing, the single model picker, local Ollama, URL normalization and warnings.
+- **Rendering:** Markdown, KaTeX protection and sanitization of model output (`marked` and `DOMPurify` are installed at the same versions the page loads from the CDN).
+
+CI (`.github/workflows/ci.yml`) runs the suite on Node 20 and 22 and rebuilds the CSS to make sure the committed `dist/styles.css` matches the sources: if you add a Tailwind class, run `npm run build` and commit the result.
 
 ### Translations
 

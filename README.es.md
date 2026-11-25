@@ -37,6 +37,7 @@ Requiere Node.js solo para compilar el CSS de Tailwind.
 npm install
 npm run build   # genera dist/styles.css (minificado)
 npm run watch   # recompila al editar
+npm test        # ejecuta los tests (Node 20+)
 ```
 
 `dist/styles.css` está incluido en el repositorio para poder publicar el sitio sin paso de compilación (por ejemplo, con GitHub Pages).
@@ -50,7 +51,21 @@ src/app.js          lógica de la aplicación y capa de proveedores de IA
 src/input.css       estilos propios + directivas de Tailwind
 tailwind.config.js  configuración de Tailwind
 dist/styles.css     CSS compilado
+tests/              tests (node:test + jsdom)
+.github/workflows/  CI: tests en Node 20 y 22, y comprobación de que dist/styles.css está al día
 ```
+
+### Tests
+
+`npm test` arranca el `index.html`, `src/i18n.js` y `src/app.js` reales en [jsdom](https://github.com/jsdom/jsdom) con un `fetch` simulado, así que no hace falta red ni clave de API (unos 6 segundos). Cubre:
+
+- **Traducciones:** cada clave existe en los dos idiomas, los marcadores coinciden, no se cuela castellano en el código y existen todos los manejadores y ids.
+- **Idioma:** inglés por defecto, cambio en caliente, elección recordada y que los prompts enviados al modelo siguen el idioma.
+- **Proveedores:** formato de petición de Gemini, Anthropic y los compatibles con OpenAI (OpenAI, OpenRouter, Groq, Grok, Ollama, otras APIs), errores, reintentos y almacenamiento de la clave.
+- **Modelos y URL base:** listado automático de modelos, selector único, Ollama local, normalización de URL y avisos.
+- **Renderizado:** Markdown, protección de KaTeX y saneado de la salida del modelo (`marked` y `DOMPurify` se instalan en las mismas versiones que la página carga del CDN).
+
+La CI (`.github/workflows/ci.yml`) ejecuta los tests en Node 20 y 22 y recompila el CSS para comprobar que el `dist/styles.css` del repositorio coincide con el código: si añades una clase de Tailwind, ejecuta `npm run build` y sube el resultado.
 
 ### Traducciones
 

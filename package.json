@@ -5,10 +5,18 @@
   "description": "AI explainer for scientific papers (pure client-side, bring your own API key)",
   "scripts": {
     "build": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --minify",
-    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --watch"
+    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --watch",
+    "test": "node --test",
+    "check:css": "npm run build && git diff --exit-code -- dist/styles.css"
   },
   "devDependencies": {
+    "dompurify": "3.2.4",
+    "jsdom": "25.0.1",
+    "marked": "12.0.2",
     "tailwindcss": "3.4.17"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "license": "Apache-2.0",
   "author": "Potzon"

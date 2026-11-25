@@ -734,7 +734,7 @@ async function handleFileSelection(file) {
 
         if (lowerName.endsWith('.txt')) {
             statusText.textContent = t('file.readingTxt');
-            extractedText = await file.text();
+            extractedText = (await file.text()).trim(); // a trailing newline must not count as a word
         } else if (lowerName.endsWith('.pdf')) {
             fileType = 'PDF';
             statusText.textContent = t('file.loadingPdf');
