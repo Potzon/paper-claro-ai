@@ -44,7 +44,18 @@ There is an online copy at <https://gotzon.viteri.eus/paperclaro/>. You still ne
 OLLAMA_ORIGINS=https://gotzon.viteri.eus ollama serve
 ```
 
-If Ollama runs as a service, set `OLLAMA_ORIGINS` there (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://gotzon.viteri.eus"`; Windows: a user environment variable) and restart it. Chrome may also ask for permission to access your local network.
+If Ollama runs as a service, set `OLLAMA_ORIGINS` there and restart it:
+
+- **Linux:** run `sudo systemctl edit ollama` and type these two lines at the **top** of the file, above the "Edits below this comment will be discarded" line (anything below it is thrown away):
+  ```ini
+  [Service]
+  Environment="OLLAMA_ORIGINS=https://gotzon.viteri.eus"
+  ```
+  Save, then run `sudo systemctl restart ollama`.
+- **macOS:** `launchctl setenv OLLAMA_ORIGINS "https://gotzon.viteri.eus"`, then restart the Ollama app.
+- **Windows:** a user environment variable, then restart Ollama.
+
+Chrome may also ask for permission to access your local network.
 
 ## No API key? Use the skill
 
