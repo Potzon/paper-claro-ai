@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --minify",
     "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --watch",
+    "build:skill": "node scripts/build-skill.js",
     "test": "node --test",
     "check:css": "npm run build && git diff --exit-code -- dist/styles.css"
   },
