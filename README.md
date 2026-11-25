@@ -13,7 +13,7 @@ It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no ac
 - Follow-up chat that keeps the paper's context.
 - Math formulas with KaTeX and Markdown export.
 - **English by default, with Spanish as an alternative.** Switch with the EN / ES toggle in the header; your choice is remembered in the browser. The language also decides the language of the generated explanation and of the chat answers.
-- Several providers: **Google Gemini, OpenAI, Anthropic (Claude), Grok (xAI), OpenRouter, Groq, Ollama (local)** and any OpenAI-compatible API.
+- Several providers: **Google Gemini, OpenAI, Anthropic (Claude), Grok (xAI), OpenRouter, Groq, Ollama (local), OpenCode (local)** and any OpenAI-compatible API.
 - When you enter your key, the app asks the provider which models are available and offers them in a dropdown (you can also type the name by hand).
 
 ## Usage
@@ -21,6 +21,15 @@ It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no ac
 Serve the folder with any static server (for example `python3 -m http.server 8000` and open <http://localhost:8000>), click **Set up API**, choose a provider and paste your key.
 
 > Web search when asking for a paper by title is only available with Gemini. With the other providers the model answers from its own knowledge and may get lesser-known papers wrong: double-check important details.
+
+## No API key? Use the skill
+
+A Claude Pro or Max subscription does not include an API key, so the web app cannot use it. For that case the repository ships the same prompts as an [Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) in [`skill/paperclaro/`](skill/paperclaro/), which runs inside Claude Code or claude.ai with your subscription:
+
+- **Claude Code:** copy the folder to `~/.claude/skills/paperclaro/` (or to `.claude/skills/` inside a project), then ask for example *"explain this paper at researcher level: ~/papers/attention.pdf"*.
+- **claude.ai:** zip the `paperclaro` folder (`cd skill && zip -r paperclaro.zip paperclaro`) and upload it from the Skills section of the claude.ai settings (the menu name has changed over time; it needs *Code execution and file creation* enabled, and availability depends on your plan).
+
+It offers the same three levels and four output focuses, answers in your language (English or Spanish prompts) and keeps answering follow-up questions. There is no history panel or chat window: it is the normal conversation.
 
 ## Privacy and security
 
@@ -67,6 +76,10 @@ tests/              test suite (node:test + jsdom)
 
 CI (`.github/workflows/ci.yml`) runs the suite on Node 22 and 24 and rebuilds the CSS to make sure the committed `dist/styles.css` matches the sources: if you add a Tailwind class, run `npm run build` and commit the result.
 
+### Skill
+
+`skill/paperclaro/` is generated from the prompts in `src/i18n.js`: do not edit it by hand. After changing a prompt run `npm run build:skill` and commit the result; a test fails if the skill is out of date.
+
 ### Translations
 
 - Static texts live in `index.html` in English. An element is translated by tagging it with `data-i18n="key"` (its HTML is replaced) and/or `data-i18n-attr="placeholder:key; title:other.key"` (attributes). The English text is read from the page itself, so it is never duplicated.
@@ -75,11 +88,19 @@ CI (`.github/workflows/ci.yml`) runs the suite on Node 22 and 24 and rebuilds th
 
 > **Ollama (local):** don't open `index.html` by double-clicking it (`file://`): the browser sends `Origin: null` and Ollama answers 403. Serve the folder instead, e.g. `python3 -m http.server 8000` and open <http://localhost:8000> (Ollama accepts `localhost` origins by default). To use another address or an HTTPS site, start Ollama with `OLLAMA_ORIGINS` set to that origin.
 
+> **OpenCode (local):** uses the [OpenCode](https://opencode.ai) running on your computer, including its free models, so no API key is needed. Serve the app from `localhost` (same as Ollama) and:
+>
+> 1. `opencode service status` prints the URL of the service (`http://127.0.0.1:49374` by default; the port may change if the service restarts).
+> 2. `opencode api POST /api/pair` prints a pairing code (single use, valid for 5 minutes).
+> 3. In the settings choose **OpenCode (local)**, check the URL and paste the code. It is exchanged for a token (stored like an API key, see *Privacy*) and your models appear, free ones first.
+>
+> Each answer is a plain text generation through OpenCode's HTTP API (no tools, no files), which OpenCode still labels as experimental. The app creates one session called "PaperClaro AI" per model and reuses it; you can delete them from OpenCode. Free models have OpenCode's own usage limits, and when one runs out the app shows OpenCode's message.
+
 > **Ollama Cloud:** its API does not accept direct calls from the browser (CORS). To use its models, sign in with `ollama signin` on your local Ollama and choose the "Ollama (local)" provider with a `-cloud` model.
 
 ## Credits and trademarks
 
-Provider logos are shown only to identify them in the selector. They are trademarks of their respective owners (Google, OpenAI, Anthropic, xAI, OpenRouter, Groq, Ollama), with which this project is not affiliated or endorsed. The SVG paths come from [Simple Icons](https://simpleicons.org) (CC0) and [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
+Provider logos are shown only to identify them in the selector. They are trademarks of their respective owners (Google, OpenAI, Anthropic, xAI, OpenRouter, Groq, Ollama, OpenCode), with which this project is not affiliated or endorsed. The SVG paths come from [Simple Icons](https://simpleicons.org) (CC0) and [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
 
 ## License
 
