@@ -1,8 +1,8 @@
 {
-  "name": "paperclaro-ia",
+  "name": "paperclaro-ai",
   "version": "1.0.0",
   "private": true,
-  "description": "Explicador de papers científicos con IA (cliente puro, trae tu propia clave de API)",
+  "description": "AI explainer for scientific papers (pure client-side, bring your own API key)",
   "scripts": {
     "build": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --minify",
     "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --watch"
