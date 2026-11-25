@@ -158,6 +158,9 @@ describe('language: English by default, Spanish as an alternative', () => {
         body = app.lastCall('generateContent').body;
         assert.equal(body.contents.at(-1).parts[0].text, '¿Cómo se compara con trabajos anteriores en su campo?');
         assert.match(body.systemInstruction.parts[0].text, /Nivel Universitario/);
+        // the assistant avatar reads "AI" in both languages
+        const avatars = [...app.$('chatMessagesContainer').querySelectorAll('div.bg-emerald-100')].map((a) => a.textContent);
+        assert.ok(avatars.length >= 2 && avatars.every((a) => a === 'AI'), `avatars: ${avatars}`);
     });
 
     it('one-click examples send the query of the current language', async () => {

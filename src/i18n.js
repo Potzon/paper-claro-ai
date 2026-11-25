@@ -382,7 +382,7 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'toast.generated': 'Explicación generada correctamente',
 
         'err.noReply': 'No se recibió respuesta del asistente.',
-        'chat.avatar': 'IA',
+        'chat.avatar': 'AI',
         'chat.error': '⚠️ Lo siento, ocurrió un problema al procesar tu pregunta ({error}). Por favor, inténtalo de nuevo.',
         'chat.errorFallback': 'error de red',
 
