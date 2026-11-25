@@ -1,59 +1,69 @@
-# PaperClaro IA
+# PaperClaro AI
 
-Explicador de papers científicos con IA. Busca un paper por título, pega su abstract o sube un PDF, y obtén una explicación en español adaptada a tu nivel, con chat para hacerle preguntas.
+[Español](README.es.md)
 
-Es una aplicación 100 % de cliente: HTML, CSS y JavaScript, sin servidor ni cuentas. **Tú pones tu propia clave de API.**
+AI explainer for scientific papers. Search for a paper by title, paste its abstract or upload a PDF, and get an explanation adapted to your level, with a chat to ask follow-up questions.
 
-## Características
+It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no accounts. **You bring your own API key.**
 
-- Tres formas de entrada: título o tema, texto pegado o PDF/TXT (el PDF se lee en tu navegador).
-- Tres niveles (sencillo, universitario, investigador) y cuatro enfoques (análisis completo, resumen, glosario, lectura crítica).
-- Chat de seguimiento que mantiene el contexto del paper.
-- Fórmulas matemáticas con KaTeX y exportación a Markdown.
-- Varios proveedores: **Google Gemini, OpenAI, Anthropic (Claude), OpenRouter, Groq, Ollama (local)** y cualquier API compatible con OpenAI.
-- Al introducir la clave, la app consulta al proveedor qué modelos tiene disponibles y los ofrece en un desplegable (también puedes escribir el nombre a mano).
+## Features
 
-## Uso
+- Three ways to provide a paper: title or topic, pasted text, or a PDF/TXT file (PDFs are read in your browser).
+- Three levels (simple, university, researcher) and four focuses (full analysis, executive summary, glossary, critical reading).
+- Follow-up chat that keeps the paper's context.
+- Math formulas with KaTeX and Markdown export.
+- **English by default, with Spanish as an alternative.** Switch with the EN / ES toggle in the header; your choice is remembered in the browser. The language also decides the language of the generated explanation and of the chat answers.
+- Several providers: **Google Gemini, OpenAI, Anthropic (Claude), OpenRouter, Groq, Ollama (local)** and any OpenAI-compatible API.
+- When you enter your key, the app asks the provider which models are available and offers them in a dropdown (you can also type the name by hand).
 
-Abre `index.html` en el navegador (o sírvelo con cualquier servidor estático), pulsa **Configurar API**, elige proveedor y pega tu clave.
+## Usage
 
-> La búsqueda web al pedir un paper por título solo está disponible con Gemini. Con el resto de proveedores el modelo responde con su propio conocimiento y puede equivocarse con papers poco conocidos: contrasta los datos importantes.
+Open `index.html` in your browser (or serve it with any static server), click **Set up API**, choose a provider and paste your key.
 
-## Privacidad y seguridad
+> Web search when asking for a paper by title is only available with Gemini. With the other providers the model answers from its own knowledge and may get lesser-known papers wrong: double-check important details.
 
-- Tu clave y el contenido de los papers van **directamente de tu navegador al proveedor que elijas**. No pasan por ningún servidor del proyecto.
-- Por defecto la clave solo se guarda mientras la pestaña esté abierta. Si marcas "Recordar", se guarda **sin cifrar** en el almacenamiento del navegador: no lo hagas en un equipo compartido.
-- Usa claves con límite de gasto cuando el proveedor lo permita.
-- Las librerías externas se cargan desde CDN con versión fija y verificación de integridad (SRI). PDF.js y KaTeX solo se descargan cuando hacen falta.
+## Privacy and security
 
-## Desarrollo
+- Your key and the content of your papers go **straight from your browser to the provider you choose**. They never pass through any server of this project.
+- By default the key is only kept while the tab is open. If you tick "Remember", it is stored **unencrypted** in the browser's storage: don't do it on a shared computer.
+- Use keys with a spending limit when the provider allows it.
+- External libraries are loaded from a CDN with a pinned version and integrity checks (SRI). PDF.js and KaTeX are only downloaded when needed.
 
-Requiere Node.js solo para compilar el CSS de Tailwind.
+## Development
+
+Node.js is only required to compile the Tailwind CSS.
 
 ```bash
 npm install
-npm run build   # genera dist/styles.css (minificado)
-npm run watch   # recompila al editar
+npm run build   # generates dist/styles.css (minified)
+npm run watch   # rebuilds on change
 ```
 
-`dist/styles.css` está incluido en el repositorio para poder publicar el sitio sin paso de compilación (por ejemplo, con GitHub Pages).
+`dist/styles.css` is committed so the site can be published with no build step (for example, on GitHub Pages).
 
-Estructura:
+Structure:
 
 ```
-index.html          marcado de la página
-src/app.js          lógica de la aplicación y capa de proveedores de IA
-src/input.css       estilos propios + directivas de Tailwind
-tailwind.config.js  configuración de Tailwind
-dist/styles.css     CSS compilado
+index.html          page markup (English texts, tagged with data-i18n)
+src/i18n.js         translations (English / Spanish), language switch and model prompts
+src/app.js          application logic and AI provider layer
+src/input.css       custom styles + Tailwind directives
+tailwind.config.js  Tailwind configuration
+dist/styles.css     compiled CSS
 ```
 
-> **Ollama Cloud:** su API no admite llamadas directas desde el navegador (CORS). Para usar sus modelos, inicia sesión con `ollama signin` en tu Ollama local y elige el proveedor "Ollama (local)" con un modelo `-cloud`.
+### Translations
 
-## Créditos y marcas
+- Static texts live in `index.html` in English. An element is translated by tagging it with `data-i18n="key"` (its HTML is replaced) and/or `data-i18n-attr="placeholder:key; title:other.key"` (attributes). The English text is read from the page itself, so it is never duplicated.
+- Texts built from JavaScript (toasts, status messages, labels) and the **prompts sent to the model** are in `src/i18n.js` and read with `t('key', { vars })`.
+- `I18N.es` must contain every key. To add a language, add its dictionary to `I18N`, its code to `LANGS` / `LOCALES`, and a button with `data-lang` and `class="lang-btn"` next to the existing ones.
 
-Los logotipos de los proveedores se muestran solo para identificarlos en el selector. Son marcas de sus respectivos propietarios (Google, OpenAI, Anthropic, OpenRouter, Groq, Ollama), con los que este proyecto no está afiliado ni respaldado. Los trazos SVG proceden de [Simple Icons](https://simpleicons.org) (CC0) y [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
+> **Ollama Cloud:** its API does not accept direct calls from the browser (CORS). To use its models, sign in with `ollama signin` on your local Ollama and choose the "Ollama (local)" provider with a `-cloud` model.
 
-## Licencia
+## Credits and trademarks
 
-[Apache License 2.0](LICENSE). Copyright 2026 Potzon. Consulta [NOTICE](NOTICE).
+Provider logos are shown only to identify them in the selector. They are trademarks of their respective owners (Google, OpenAI, Anthropic, OpenRouter, Groq, Ollama), with which this project is not affiliated or endorsed. The SVG paths come from [Simple Icons](https://simpleicons.org) (CC0) and [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
+
+## License
+
+[Apache License 2.0](LICENSE). Copyright 2026 Potzon. See [NOTICE](NOTICE).
