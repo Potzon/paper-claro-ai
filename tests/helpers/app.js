@@ -4,6 +4,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const { TextEncoder } = require('node:util');
 const { JSDOM } = require('jsdom');
 
 const ROOT = path.resolve(__dirname, '..', '..');
@@ -68,6 +69,8 @@ async function boot({ url = 'http://localhost/', lang = null, handler = defaultH
     };
 
     window.HTMLElement.prototype.scrollIntoView = () => {};
+    // Every browser has TextEncoder; jsdom's window does not
+    window.TextEncoder = TextEncoder;
     window.fetch = async (u, opts = {}) => {
         app.calls.push({
             url: String(u),

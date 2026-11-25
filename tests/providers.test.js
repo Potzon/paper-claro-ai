@@ -16,16 +16,16 @@ describe('provider selector', () => {
         const app = await boot();
         app.window.openSettings();
         const names = app.providerButtons().map((b) => b.textContent.trim().replace('⚙', ''));
-        assert.deepEqual(names, ['Gemini', 'OpenAI', 'Claude', 'Grok', 'OpenRouter', 'Groq', 'Ollama (local)', 'Other API (OpenAI)']);
+        assert.deepEqual(names, ['Gemini', 'OpenAI', 'Claude', 'Grok', 'OpenRouter', 'Groq', 'Ollama (local)', 'OpenCode (local)', 'Other API (OpenAI)']);
     });
 
-    it('draws a brand logo for each provider, and only Grok needs the even-odd fill rule', async () => {
+    it('draws a brand logo for each provider; Grok and OpenCode need the even-odd fill rule', async () => {
         const app = await boot();
         app.window.openSettings();
         const svgs = app.providerButtons().map((b) => b.querySelector('svg'));
-        assert.equal(svgs.filter(Boolean).length, 7, 'the generic "Other API" has a text badge instead');
+        assert.equal(svgs.filter(Boolean).length, 8, 'the generic "Other API" has a text badge instead');
         const evenodd = app.providerButtons().filter((b) => b.querySelector('svg')?.getAttribute('fill-rule') === 'evenodd');
-        assert.deepEqual(evenodd.map((b) => b.textContent.trim()), ['Grok']);
+        assert.deepEqual(evenodd.map((b) => b.textContent.trim()), ['Grok', 'OpenCode (local)']);
     });
 
     it('selecting a provider fills its default model and shows its key hint', async () => {
