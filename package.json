@@ -1,0 +1,15 @@
+{
+  "name": "paperclaro-ia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Explicador de papers científicos con IA (cliente puro, trae tu propia clave de API)",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --minify",
+    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o dist/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "license": "Apache-2.0",
+  "author": "Potzon"
+}
