@@ -660,10 +660,24 @@
                 <div id="cfgProviderGrid" role="radiogroup" aria-labelledby="cfgProviderLabel" class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2"></div>
             </div>
 
+            <div id="cfgBaseWrap" class="space-y-1.5">
+                <label for="cfgBase" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.base">Base URL (OpenAI-compatible API)</span></label>
+                <input type="text" id="cfgBase" autocomplete="off" spellcheck="false" oninput="renderBaseWarning()" onchange="onBaseChange()" placeholder="https://api.example.com/v1"
+                    class="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600">
+                <p id="cfgBaseWarning" class="hidden text-[11px] text-amber-700"></p>
+            </div>
+
             <div class="space-y-1.5">
-                <label for="cfgKey" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.key">API key</span></label>
+                <div class="flex items-center justify-between gap-2">
+                    <label for="cfgKey" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.key">API key</span></label>
+                    <button type="button" id="cfgModelRefresh" onclick="loadModels()"
+                        class="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium text-indigo-700 hover:bg-indigo-50">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <span data-i18n="settings.loadModels">Search models</span>
+                    </button>
+                </div>
                 <div class="relative">
-                    <input type="password" id="cfgKey" autocomplete="off" spellcheck="false" onchange="loadModels()"
+                    <input type="password" id="cfgKey" autocomplete="off" spellcheck="false" oninput="scheduleLoadModels()"
                         class="w-full pl-3 pr-16 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600">
                     <button type="button" onclick="toggleKeyVisibility()" id="cfgKeyToggle"
                         class="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg text-xs text-slate-500 hover:text-indigo-700 hover:bg-slate-100">Show</button>
@@ -672,22 +686,13 @@
             </div>
 
             <div class="space-y-1.5">
-                <div class="flex items-center justify-between gap-2">
-                    <label for="cfgModel" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.model">Model</span></label>
-                    <button type="button" id="cfgModelRefresh" onclick="loadModels()"
-                        class="px-2 py-1 rounded-lg text-xs text-slate-500 hover:text-indigo-700 hover:bg-slate-100"><span data-i18n="settings.loadModels">Load models from my key</span></button>
-                </div>
-                <input type="text" id="cfgModel" autocomplete="off" spellcheck="false"
-                    class="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600">
+                <label for="cfgModelSelect" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.model">Model</span></label>
                 <select id="cfgModelSelect" onchange="if (this.value) document.getElementById('cfgModel').value = this.value"
-                    class="hidden w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600"></select>
-                <p id="cfgModelStatus" class="text-[11px] text-slate-500"></p>
-            </div>
-
-            <div id="cfgBaseWrap" class="space-y-1.5">
-                <label for="cfgBase" class="block text-xs font-semibold uppercase tracking-wider text-slate-600"><span data-i18n="settings.base">Base URL (OpenAI-compatible API)</span></label>
-                <input type="text" id="cfgBase" autocomplete="off" spellcheck="false" onchange="loadModels()" placeholder="https://api.example.com/v1"
+                    class="hidden w-full px-3 py-2.5 rounded-xl bg-white border border-indigo-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600"></select>
+                <input type="text" id="cfgModel" autocomplete="off" spellcheck="false" oninput="syncModelSelect()"
+                    placeholder="Or type a model name" data-i18n-attr="placeholder:settings.modelPlaceholder"
                     class="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-600/30 focus:border-indigo-600">
+                <p id="cfgModelStatus" class="text-[11px] text-slate-500"></p>
             </div>
 
             <label class="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer">
