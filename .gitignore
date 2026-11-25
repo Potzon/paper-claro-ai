@@ -1,1 +1,17 @@
 node_modules/
+
+# Local secrets and logs: this project never needs them, so they should never be committed
+.env
+.env.*
+*.log
+
+# The zip built for claude.ai (see README: "No API key? Use the skill")
+skill/*.zip
+
+# Editor, OS and tool leftovers
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+.claude/settings.local.json
