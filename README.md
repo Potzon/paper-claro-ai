@@ -20,6 +20,8 @@ It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no ac
 
 Serve the folder with any static server (for example `python3 -m http.server 8000` and open <http://localhost:8000>), click **Set up API**, choose a provider and paste your key.
 
+Nothing needs to be built to run it (`dist/styles.css` is committed). It does need an internet connection, because the page loads `marked`, `DOMPurify`, KaTeX and PDF.js from a CDN. Open it through `localhost`, not by double-clicking `index.html` (`file://`), and add `--bind 127.0.0.1` to the command if you do not want other devices on your network to reach it.
+
 > Web search when asking for a paper by title is only available with Gemini. With the other providers the model answers from its own knowledge and may get lesser-known papers wrong: double-check important details.
 
 ## No API key? Use the skill

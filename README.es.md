@@ -20,6 +20,8 @@ Es una aplicación 100 % de cliente: HTML, CSS y JavaScript, sin servidor ni cue
 
 Sirve la carpeta con cualquier servidor estático (por ejemplo `python3 -m http.server 8000` y abre <http://localhost:8000>), pulsa **Configurar API**, elige proveedor y pega tu clave.
 
+No hace falta compilar nada para usarlo (`dist/styles.css` está versionado). Sí necesita conexión a internet, porque la página carga `marked`, `DOMPurify`, KaTeX y PDF.js desde una CDN. Ábrelo a través de `localhost`, no con doble clic sobre `index.html` (`file://`), y añade `--bind 127.0.0.1` al comando si no quieres que otros dispositivos de tu red puedan acceder.
+
 > La búsqueda web al pedir un paper por título solo está disponible con Gemini. Con el resto de proveedores el modelo responde con su propio conocimiento y puede equivocarse con papers poco conocidos: contrasta los datos importantes.
 
 ## ¿Sin clave de API? Usa la skill
