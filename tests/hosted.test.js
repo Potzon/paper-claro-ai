@@ -5,7 +5,7 @@ const { boot, disposeAll, json } = require('./helpers/app');
 
 afterEach(disposeAll);
 
-const HOSTED = 'https://potzon.github.io/paper-claro-ai/';
+const HOSTED = 'https://gotzon.viteri.eus/paperclaro/';
 const status = (app) => app.$('cfgModelStatus');
 const button = (app, name) => app.providerButtons().find((b) => b.textContent.includes(name));
 
@@ -119,8 +119,8 @@ describe('Ollama: server down vs server that rejects this page', () => {
 
     it('tells the user the exact origin to allow when Ollama answers but rejects the page', async () => {
         const { app, probes } = await pickOllama(HOSTED, true);
-        assert.match(status(app).textContent, /^Ollama is running at http:\/\/localhost:11434\/v1 but it does not accept this page \(https:\/\/potzon\.github\.io\)\./);
-        assert.ok(status(app).textContent.includes('OLLAMA_ORIGINS=https://potzon.github.io ollama serve'));
+        assert.match(status(app).textContent, /^Ollama is running at http:\/\/localhost:11434\/v1 but it does not accept this page \(https:\/\/gotzon\.viteri\.eus\)\./);
+        assert.ok(status(app).textContent.includes('OLLAMA_ORIGINS=https://gotzon.viteri.eus ollama serve'));
         assert.deepEqual(probes, ['http://localhost:11434/']);   // the root of the server, never the model list
         assert.match(status(app).className, /amber/);
     });
@@ -139,8 +139,8 @@ describe('Ollama: server down vs server that rejects this page', () => {
 
     it('is translated', async () => {
         const { app } = await pickOllama(HOSTED, true, 'es');
-        assert.match(status(app).textContent, /^Ollama está en marcha en http:\/\/localhost:11434\/v1 pero no acepta esta página \(https:\/\/potzon\.github\.io\)\./);
-        assert.ok(status(app).textContent.includes('OLLAMA_ORIGINS=https://potzon.github.io ollama serve'));
+        assert.match(status(app).textContent, /^Ollama está en marcha en http:\/\/localhost:11434\/v1 pero no acepta esta página \(https:\/\/gotzon\.viteri\.eus\)\./);
+        assert.ok(status(app).textContent.includes('OLLAMA_ORIGINS=https://gotzon.viteri.eus ollama serve'));
     });
 
     it('keeps the file:// message, without probing', async () => {

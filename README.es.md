@@ -30,7 +30,7 @@ No hace falta compilar nada para usarlo (`dist/styles.css` está versionado). S�
 
 ## Pruébalo gratis
 
-Hay una copia en línea en <https://potzon.github.io/paper-claro-ai/>. Sigues necesitando una clave, pero estos proveedores tienen plan gratuito (sin tarjeta; los límites cambian a menudo, consulta cada servicio):
+Hay una copia en línea en <https://gotzon.viteri.eus/paperclaro/>. Sigues necesitando una clave, pero estos proveedores tienen plan gratuito (sin tarjeta; los límites cambian a menudo, consulta cada servicio):
 
 | Proveedor | Clave gratuita | Notas |
 |---|---|---|
@@ -41,10 +41,10 @@ Hay una copia en línea en <https://potzon.github.io/paper-claro-ai/>. Sigues ne
 **OpenCode solo funciona en la versión local** (ver Uso), porque solo acepta páginas servidas desde `localhost`: en la copia en línea aparece en gris. **Ollama sí funciona en la copia en línea**, pero antes debe permitir ese sitio. Si responde y la rechaza, la app muestra el comando exacto; por ejemplo:
 
 ```bash
-OLLAMA_ORIGINS=https://potzon.github.io ollama serve
+OLLAMA_ORIGINS=https://gotzon.viteri.eus ollama serve
 ```
 
-Si Ollama corre como servicio, define `OLLAMA_ORIGINS` ahí (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://potzon.github.io"`; Windows: una variable de entorno de usuario) y reinícialo. Chrome también puede pedirte permiso para acceder a tu red local.
+Si Ollama corre como servicio, define `OLLAMA_ORIGINS` ahí (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://gotzon.viteri.eus"`; Windows: una variable de entorno de usuario) y reinícialo. Chrome también puede pedirte permiso para acceder a tu red local.
 
 ## ¿Sin clave de API? Usa la skill
 

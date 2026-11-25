@@ -30,7 +30,7 @@ Nothing needs to be built to run it (`dist/styles.css` is committed). It does ne
 
 ## Try it for free
 
-There is an online copy at <https://potzon.github.io/paper-claro-ai/>. You still need a key, but these providers have a free plan (no card needed; limits change often, check each service):
+There is an online copy at <https://gotzon.viteri.eus/paperclaro/>. You still need a key, but these providers have a free plan (no card needed; limits change often, check each service):
 
 | Provider | Free key | Notes |
 |---|---|---|
@@ -41,10 +41,10 @@ There is an online copy at <https://potzon.github.io/paper-claro-ai/>. You still
 **OpenCode only works in the local version** (see Usage), because it accepts pages served from `localhost` only: in the online copy it appears greyed out. **Ollama also works in the online copy**, but it must allow that site first. If it answers and refuses, the app shows the exact command; for example:
 
 ```bash
-OLLAMA_ORIGINS=https://potzon.github.io ollama serve
+OLLAMA_ORIGINS=https://gotzon.viteri.eus ollama serve
 ```
 
-If Ollama runs as a service, set `OLLAMA_ORIGINS` there (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://potzon.github.io"`; Windows: a user environment variable) and restart it. Chrome may also ask for permission to access your local network.
+If Ollama runs as a service, set `OLLAMA_ORIGINS` there (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://gotzon.viteri.eus"`; Windows: a user environment variable) and restart it. Chrome may also ask for permission to access your local network.
 
 ## No API key? Use the skill
 
