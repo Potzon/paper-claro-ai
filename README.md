@@ -13,7 +13,7 @@ It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no ac
 - Follow-up chat that keeps the paper's context.
 - Math formulas with KaTeX and Markdown export.
 - **English by default, with Spanish as an alternative.** Switch with the EN / ES toggle in the header; your choice is remembered in the browser. The language also decides the language of the generated explanation and of the chat answers.
-- Several providers: **Google Gemini, OpenAI, Anthropic (Claude), OpenRouter, Groq, Ollama (local)** and any OpenAI-compatible API.
+- Several providers: **Google Gemini, OpenAI, Anthropic (Claude), Grok (xAI), OpenRouter, Groq, Ollama (local)** and any OpenAI-compatible API.
 - When you enter your key, the app asks the provider which models are available and offers them in a dropdown (you can also type the name by hand).
 
 ## Usage
@@ -62,7 +62,7 @@ dist/styles.css     compiled CSS
 
 ## Credits and trademarks
 
-Provider logos are shown only to identify them in the selector. They are trademarks of their respective owners (Google, OpenAI, Anthropic, OpenRouter, Groq, Ollama), with which this project is not affiliated or endorsed. The SVG paths come from [Simple Icons](https://simpleicons.org) (CC0) and [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
+Provider logos are shown only to identify them in the selector. They are trademarks of their respective owners (Google, OpenAI, Anthropic, xAI, OpenRouter, Groq, Ollama), with which this project is not affiliated or endorsed. The SVG paths come from [Simple Icons](https://simpleicons.org) (CC0) and [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
 
 ## License
 

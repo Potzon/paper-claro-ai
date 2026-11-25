@@ -13,7 +13,7 @@ Es una aplicación 100 % de cliente: HTML, CSS y JavaScript, sin servidor ni cue
 - Chat de seguimiento que mantiene el contexto del paper.
 - Fórmulas matemáticas con KaTeX y exportación a Markdown.
 - **Interfaz en inglés por defecto, con el castellano como alternativa.** Cambia con el selector EN / ES de la cabecera; la elección se recuerda en el navegador. El idioma también decide en qué idioma se genera la explicación y responde el chat.
-- Varios proveedores: **Google Gemini, OpenAI, Anthropic (Claude), OpenRouter, Groq, Ollama (local)** y cualquier API compatible con OpenAI.
+- Varios proveedores: **Google Gemini, OpenAI, Anthropic (Claude), Grok (xAI), OpenRouter, Groq, Ollama (local)** y cualquier API compatible con OpenAI.
 - Al introducir la clave, la app consulta al proveedor qué modelos tiene disponibles y los ofrece en un desplegable (también puedes escribir el nombre a mano).
 
 ## Uso
@@ -62,7 +62,7 @@ dist/styles.css     CSS compilado
 
 ## Créditos y marcas
 
-Los logotipos de los proveedores se muestran solo para identificarlos en el selector. Son marcas de sus respectivos propietarios (Google, OpenAI, Anthropic, OpenRouter, Groq, Ollama), con los que este proyecto no está afiliado ni respaldado. Los trazos SVG proceden de [Simple Icons](https://simpleicons.org) (CC0) y [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
+Los logotipos de los proveedores se muestran solo para identificarlos en el selector. Son marcas de sus respectivos propietarios (Google, OpenAI, Anthropic, xAI, OpenRouter, Groq, Ollama), con los que este proyecto no está afiliado ni respaldado. Los trazos SVG proceden de [Simple Icons](https://simpleicons.org) (CC0) y [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT).
 
 ## Licencia
 
