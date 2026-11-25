@@ -169,7 +169,7 @@ let modelsReqId = 0;
 let modelsTimer = null;
 let modelsStatus = null; // { key, vars } of the text shown under the model field, so it can be re-translated
 const NON_CHAT_MODEL = /embed|whisper|tts|dall-e|moderation|transcribe|realtime|image|audio|rerank/i;
-const MODELS_WARN = ['models.failed', 'models.localDown', 'models.empty', 'models.badBase'];
+const MODELS_WARN = ['models.failed', 'models.localDown', 'models.localDownFile', 'models.empty', 'models.badBase'];
 const MIN_KEY_LENGTH = 8; // while typing/pasting, shorter text is not sent to the provider
 
 // Whether listing models needs a key (local servers and providers with a public catalog do not).
@@ -293,7 +293,8 @@ async function loadModels({ auto = false } = {}) {
         setModelsStatus('models.available', { n: models.length });
     } catch (e) {
         if (reqId !== modelsReqId) return;
-        if (e.network && p.keyOptional) setModelsStatus('models.localDown', { base });
+        // Opened from disk (file://) the browser sends `Origin: null`, which Ollama rejects: say so explicitly
+        if (e.network && p.keyOptional) setModelsStatus(window.location.protocol === 'file:' ? 'models.localDownFile' : 'models.localDown', { base });
         else setModelsStatus('models.failed', { error: e.message || t('models.netError') });
     }
 }

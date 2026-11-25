@@ -47,6 +47,7 @@ const I18N = {
         'models.pick': 'Choose from the list ({n} models)…',
         'models.available': '{n} models available with this key. You can also type the name by hand.',
         'models.failed': 'Could not load the list ({error}). Type the model name by hand.',
+        'models.localDownFile': 'Could not reach {base}. You opened this page as a file (file://), and local servers like Ollama reject that origin. Serve the folder instead, e.g. run "python3 -m http.server 8000" in it and open http://localhost:8000, or start Ollama with OLLAMA_ORIGINS=null.',
         'models.localDown': 'Could not reach {base}. Check that the server is running and, for Ollama, that OLLAMA_ORIGINS allows this page. You can type the model name by hand.',
         'models.netError': 'network or CORS error',
 
@@ -341,6 +342,7 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'models.pick': 'Elegir de la lista ({n} modelos)…',
         'models.available': '{n} modelos disponibles con esta clave. También puedes escribir el nombre a mano.',
         'models.failed': 'No se pudo cargar la lista ({error}). Escribe el nombre del modelo a mano.',
+        'models.localDownFile': 'No se pudo conectar con {base}. Has abierto esta página como archivo (file://) y los servidores locales como Ollama rechazan ese origen. Sirve la carpeta en su lugar, p. ej. ejecuta "python3 -m http.server 8000" en ella y abre http://localhost:8000, o arranca Ollama con OLLAMA_ORIGINS=null.',
         'models.localDown': 'No se pudo conectar con {base}. Comprueba que el servidor esté en marcha y, en Ollama, que OLLAMA_ORIGINS permita esta página. Puedes escribir el nombre del modelo a mano.',
         'models.netError': 'error de red o CORS',
 

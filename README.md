@@ -18,7 +18,7 @@ It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no ac
 
 ## Usage
 
-Open `index.html` in your browser (or serve it with any static server), click **Set up API**, choose a provider and paste your key.
+Serve the folder with any static server (for example `python3 -m http.server 8000` and open <http://localhost:8000>), click **Set up API**, choose a provider and paste your key.
 
 > Web search when asking for a paper by title is only available with Gemini. With the other providers the model answers from its own knowledge and may get lesser-known papers wrong: double-check important details.
 
@@ -57,6 +57,8 @@ dist/styles.css     compiled CSS
 - Static texts live in `index.html` in English. An element is translated by tagging it with `data-i18n="key"` (its HTML is replaced) and/or `data-i18n-attr="placeholder:key; title:other.key"` (attributes). The English text is read from the page itself, so it is never duplicated.
 - Texts built from JavaScript (toasts, status messages, labels) and the **prompts sent to the model** are in `src/i18n.js` and read with `t('key', { vars })`.
 - `I18N.es` must contain every key. To add a language, add its dictionary to `I18N`, its code to `LANGS` / `LOCALES`, and a button with `data-lang` and `class="lang-btn"` next to the existing ones.
+
+> **Ollama (local):** don't open `index.html` by double-clicking it (`file://`): the browser sends `Origin: null` and Ollama answers 403. Serve the folder instead, e.g. `python3 -m http.server 8000` and open <http://localhost:8000> (Ollama accepts `localhost` origins by default). To use another address or an HTTPS site, start Ollama with `OLLAMA_ORIGINS` set to that origin.
 
 > **Ollama Cloud:** its API does not accept direct calls from the browser (CORS). To use its models, sign in with `ollama signin` on your local Ollama and choose the "Ollama (local)" provider with a `-cloud` model.
 

@@ -18,7 +18,7 @@ Es una aplicación 100 % de cliente: HTML, CSS y JavaScript, sin servidor ni cue
 
 ## Uso
 
-Abre `index.html` en el navegador (o sírvelo con cualquier servidor estático), pulsa **Configurar API**, elige proveedor y pega tu clave.
+Sirve la carpeta con cualquier servidor estático (por ejemplo `python3 -m http.server 8000` y abre <http://localhost:8000>), pulsa **Configurar API**, elige proveedor y pega tu clave.
 
 > La búsqueda web al pedir un paper por título solo está disponible con Gemini. Con el resto de proveedores el modelo responde con su propio conocimiento y puede equivocarse con papers poco conocidos: contrasta los datos importantes.
 
@@ -57,6 +57,8 @@ dist/styles.css     CSS compilado
 - Los textos estáticos están en `index.html`, en inglés. Un elemento se traduce marcándolo con `data-i18n="clave"` (se sustituye su HTML) y/o `data-i18n-attr="placeholder:clave; title:otra.clave"` (atributos). El texto inglés se lee de la propia página, así que no se duplica.
 - Los textos construidos desde JavaScript (avisos, estados, etiquetas) y los **prompts que se envían al modelo** están en `src/i18n.js` y se leen con `t('clave', { vars })`.
 - `I18N.es` debe contener todas las claves. Para añadir un idioma: añade su diccionario a `I18N`, su código a `LANGS` / `LOCALES` y un botón con `data-lang` y `class="lang-btn"` junto a los existentes.
+
+> **Ollama (local):** no abras `index.html` con doble clic (`file://`): el navegador envía `Origin: null` y Ollama responde 403. Sirve la carpeta, p. ej. `python3 -m http.server 8000` y abre <http://localhost:8000> (Ollama acepta por defecto los orígenes `localhost`). Para otra dirección o un sitio HTTPS, arranca Ollama con `OLLAMA_ORIGINS` apuntando a ese origen.
 
 > **Ollama Cloud:** su API no admite llamadas directas desde el navegador (CORS). Para usar sus modelos, inicia sesión con `ollama signin` en tu Ollama local y elige el proveedor "Ollama (local)" con un modelo `-cloud`.
 
