@@ -11,7 +11,7 @@ const warning = (app) => app.$('cfgBaseWarning');
 describe('base URL: which providers expose it', () => {
     for (const [name, editable] of [
         ['Gemini', false], ['OpenAI', false], ['Claude', false], ['Grok', false],
-        ['OpenRouter', false], ['Groq', false], ['Ollama (local)', true], ['Other API (OpenAI)', true]
+        ['OpenRouter', false], ['Groq', false], ['Ollama (local)', true], ['OpenCode (local)', true], ['Other API (OpenAI)', true]
     ]) {
         it(`${name}: field ${editable ? 'visible' : 'hidden'}`, async () => {
             const app = await boot();

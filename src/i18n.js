@@ -18,6 +18,7 @@ const I18N = {
         'hint.openrouter': 'Starts with sk-or-… Gives access to many models with a single key.',
         'hint.groq': 'Starts with gsk_… (console.groq.com/keys)',
         'hint.ollama': 'No key needed. Ollama must allow this page\'s origin (OLLAMA_ORIGINS).',
+        'hint.opencode': 'Needs OpenCode running on this computer. "opencode service status" prints its URL and "opencode api POST /api/pair" a pairing code (valid 5 minutes): paste the code here and it is exchanged for a token.',
         'hint.custom': 'Enter the base URL and the model of your service (LM Studio, vLLM, Together, Mistral…).',
 
         // ---- Header / status ----
@@ -38,6 +39,11 @@ const I18N = {
         'settings.needConfig': 'Set up a provider and your API key to analyze papers.',
         'models.enterKey': 'Enter your API key to see the available models.',
         'models.enterBase': 'Enter the base URL to be able to list the models.',
+        'models.enterCode': 'Paste a pairing code ("opencode api POST /api/pair") to see your models.',
+        'models.opencodeBadCode': 'OpenCode did not accept that code or token. Pairing codes work once and expire after 5 minutes: run "opencode api POST /api/pair" again.',
+        'models.opencodeDown': 'Could not reach OpenCode at {base}. Check that it is running ("opencode service status" shows its URL) and open this page from http://localhost, not as a file (file://).',
+        'models.free': 'free',
+        'settings.pairingCode': 'Pairing code',
         'models.badBase': 'Fix the base URL to be able to list the models.',
         'base.badScheme': 'The base URL must start with http:// or https://.',
         'base.mixed': 'This page is served over HTTPS, so the browser blocks calls to an http:// address (except localhost). Use an https:// URL.',
@@ -72,6 +78,8 @@ const I18N = {
         // ---- Provider requests ----
         'err.connect': 'Could not connect to the provider (network, CORS or wrong base URL).',
         'err.badKey': 'Invalid API key or missing permissions.',
+        'err.opencodeDown': 'Could not connect to OpenCode at {base}. Is it running, and is this page opened from http://localhost?',
+        'err.opencodeAuth': 'OpenCode rejected the token (it may have expired or the service was restarted). Pair again: run "opencode api POST /api/pair" and paste the new code in the settings.',
         'err.api': 'API error ({status}): {detail}',
 
         // ---- Analysis ----
@@ -316,6 +324,7 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'hint.openrouter': 'Empieza por sk-or-… Da acceso a muchos modelos con una sola clave.',
         'hint.groq': 'Empieza por gsk_… (console.groq.com/keys)',
         'hint.ollama': 'No necesita clave. Ollama debe permitir el origen de esta página (OLLAMA_ORIGINS).',
+        'hint.opencode': 'Necesita OpenCode en marcha en este equipo. "opencode service status" muestra su URL y "opencode api POST /api/pair" un código de emparejamiento (válido 5 minutos): pega el código aquí y se cambia por un token.',
         'hint.custom': 'Indica la URL base y el modelo de tu servicio (LM Studio, vLLM, Together, Mistral…).',
 
         'api.setup': 'Configurar API',
@@ -334,6 +343,11 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'settings.needConfig': 'Configura un proveedor y tu clave de API para poder analizar papers.',
         'models.enterKey': 'Introduce la clave de API para ver los modelos disponibles.',
         'models.enterBase': 'Indica la URL base para poder listar los modelos.',
+        'models.enterCode': 'Pega un código de emparejamiento ("opencode api POST /api/pair") para ver tus modelos.',
+        'models.opencodeBadCode': 'OpenCode no aceptó ese código ni token. Los códigos sirven una vez y caducan a los 5 minutos: ejecuta de nuevo "opencode api POST /api/pair".',
+        'models.opencodeDown': 'No se pudo conectar con OpenCode en {base}. Comprueba que esté en marcha ("opencode service status" muestra su URL) y abre esta página desde http://localhost, no como archivo (file://).',
+        'models.free': 'gratis',
+        'settings.pairingCode': 'Código de emparejamiento',
         'models.badBase': 'Corrige la URL base para poder listar los modelos.',
         'base.badScheme': 'La URL base debe empezar por http:// o https://.',
         'base.mixed': 'Esta página se sirve por HTTPS, así que el navegador bloquea las llamadas a una dirección http:// (salvo localhost). Usa una URL https://.',
@@ -365,6 +379,8 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
 
         'err.connect': 'No se pudo conectar con el proveedor (red, CORS o URL base incorrecta).',
         'err.badKey': 'Clave de API no válida o sin permisos.',
+        'err.opencodeDown': 'No se pudo conectar con OpenCode en {base}. ¿Está en marcha y has abierto esta página desde http://localhost?',
+        'err.opencodeAuth': 'OpenCode rechazó el token (puede haber caducado o el servicio se reinició). Empareja de nuevo: ejecuta "opencode api POST /api/pair" y pega el código nuevo en los ajustes.',
         'err.api': 'Error de API ({status}): {detail}',
 
         'val.title': 'Escribe el título de un paper, sus autores o el tema del estudio que quieres que te explique.',

@@ -20,6 +20,7 @@ const PROVIDERS = {
     openrouter: { name: 'OpenRouter', color: '#6566F1', icon: 'M18.654 3.87a5.087 5.087 0 110 10.174L23.7 19.09c.64.641.187 1.737-.72 1.737H8.48a8.479 8.479 0 010-16.958h10.175zM8.479 7.26a5.087 5.087 0 100 10.176 5.087 5.087 0 000-10.175z', label: 'OpenRouter',               kind: 'openai',    model: 'openai/gpt-4o-mini', modelsPublic: true, base: 'https://openrouter.ai/api/v1' },
     groq:       { name: 'Groq', color: '#F55036', icon: 'M12.036 2c-3.853-.035-7 3-7.036 6.781-.035 3.782 3.055 6.872 6.908 6.907h2.42v-2.566h-2.292c-2.407.028-4.38-1.866-4.408-4.23-.029-2.362 1.901-4.298 4.308-4.326h.1c2.407 0 4.358 1.915 4.365 4.278v6.305c0 2.342-1.944 4.25-4.323 4.279a4.375 4.375 0 01-3.033-1.252l-1.851 1.818A7 7 0 0012.029 22h.092c3.803-.056 6.858-3.083 6.879-6.816v-6.5C18.907 4.963 15.817 2 12.036 2z', label: 'Groq',                     kind: 'openai',    model: 'llama-3.3-70b-versatile', base: 'https://api.groq.com/openai/v1' },
     ollama:     { name: 'Ollama (local)', color: '#000000', icon: 'M16.361 10.26a.894.894 0 0 0-.558.47l-.072.148.001.207c0 .193.004.217.059.353.076.193.152.312.291.448.24.238.51.3.872.205a.86.86 0 0 0 .517-.436.752.752 0 0 0 .08-.498c-.064-.453-.33-.782-.724-.897a1.06 1.06 0 0 0-.466 0zm-9.203.005c-.305.096-.533.32-.65.639a1.187 1.187 0 0 0-.06.52c.057.309.31.59.598.667.362.095.632.033.872-.205.14-.136.215-.255.291-.448.055-.136.059-.16.059-.353l.001-.207-.072-.148a.894.894 0 0 0-.565-.472 1.02 1.02 0 0 0-.474.007Zm4.184 2c-.131.071-.223.25-.195.383.031.143.157.288.353.407.105.063.112.072.117.136.004.038-.01.146-.029.243-.02.094-.036.194-.036.222.002.074.07.195.143.253.064.052.076.054.255.059.164.005.198.001.264-.03.169-.082.212-.234.15-.525-.052-.243-.042-.28.087-.355.137-.08.281-.219.324-.314a.365.365 0 0 0-.175-.48.394.394 0 0 0-.181-.033c-.126 0-.207.03-.355.124l-.085.053-.053-.032c-.219-.13-.259-.145-.391-.143a.396.396 0 0 0-.193.032zm.39-2.195c-.373.036-.475.05-.654.086-.291.06-.68.195-.951.328-.94.46-1.589 1.226-1.787 2.114-.04.176-.045.234-.045.53 0 .294.005.357.043.524.264 1.16 1.332 2.017 2.714 2.173.3.033 1.596.033 1.896 0 1.11-.125 2.064-.727 2.493-1.571.114-.226.169-.372.22-.602.039-.167.044-.23.044-.523 0-.297-.005-.355-.045-.531-.288-1.29-1.539-2.304-3.072-2.497a6.873 6.873 0 0 0-.855-.031zm.645.937a3.283 3.283 0 0 1 1.44.514c.223.148.537.458.671.662.166.251.26.508.303.82.02.143.01.251-.043.482-.08.345-.332.705-.672.957a3.115 3.115 0 0 1-.689.348c-.382.122-.632.144-1.525.138-.582-.006-.686-.01-.853-.042-.57-.107-1.022-.334-1.35-.68-.264-.28-.385-.535-.45-.946-.03-.192.025-.509.137-.776.136-.326.488-.73.836-.963.403-.269.934-.46 1.422-.512.187-.02.586-.02.773-.002zm-5.503-11a1.653 1.653 0 0 0-.683.298C5.617.74 5.173 1.666 4.985 2.819c-.07.436-.119 1.04-.119 1.503 0 .544.064 1.24.155 1.721.02.107.031.202.023.208a8.12 8.12 0 0 1-.187.152 5.324 5.324 0 0 0-.949 1.02 5.49 5.49 0 0 0-.94 2.339 6.625 6.625 0 0 0-.023 1.357c.091.78.325 1.438.727 2.04l.13.195-.037.064c-.269.452-.498 1.105-.605 1.732-.084.496-.095.629-.095 1.294 0 .67.009.803.088 1.266.095.555.288 1.143.503 1.534.071.128.243.393.264.407.007.003-.014.067-.046.141a7.405 7.405 0 0 0-.548 1.873c-.062.417-.071.552-.071.991 0 .56.031.832.148 1.279L3.42 24h1.478l-.05-.091c-.297-.552-.325-1.575-.068-2.597.117-.472.25-.819.498-1.296l.148-.29v-.177c0-.165-.003-.184-.057-.293a.915.915 0 0 0-.194-.25 1.74 1.74 0 0 1-.385-.543c-.424-.92-.506-2.286-.208-3.451.124-.486.329-.918.544-1.154a.787.787 0 0 0 .223-.531c0-.195-.07-.355-.224-.522a3.136 3.136 0 0 1-.817-1.729c-.14-.96.114-2.005.69-2.834.563-.814 1.353-1.336 2.237-1.475.199-.033.57-.028.776.01.226.04.367.028.512-.041.179-.085.268-.19.374-.431.093-.215.165-.333.36-.576.234-.29.46-.489.822-.729.413-.27.884-.467 1.352-.561.17-.035.25-.04.569-.04.319 0 .398.005.569.04a4.07 4.07 0 0 1 1.914.997c.117.109.398.457.488.602.034.057.095.177.132.267.105.241.195.346.374.43.14.068.286.082.503.045.343-.058.607-.053.943.016 1.144.23 2.14 1.173 2.581 2.437.385 1.108.276 2.267-.296 3.153-.097.15-.193.27-.333.419-.301.322-.301.722-.001 1.053.493.539.801 1.866.708 3.036-.062.772-.26 1.463-.533 1.854a2.096 2.096 0 0 1-.224.258.916.916 0 0 0-.194.25c-.054.109-.057.128-.057.293v.178l.148.29c.248.476.38.823.498 1.295.253 1.008.231 2.01-.059 2.581a.845.845 0 0 0-.044.098c0 .006.329.009.732.009h.73l.02-.074.036-.134c.019-.076.057-.3.088-.516.029-.217.029-1.016 0-1.258-.11-.875-.295-1.57-.597-2.226-.032-.074-.053-.138-.046-.141.008-.005.057-.074.108-.152.376-.569.607-1.284.724-2.228.031-.26.031-1.378 0-1.628-.083-.645-.182-1.082-.348-1.525a6.083 6.083 0 0 0-.329-.7l-.038-.064.131-.194c.402-.604.636-1.262.727-2.04a6.625 6.625 0 0 0-.024-1.358 5.512 5.512 0 0 0-.939-2.339 5.325 5.325 0 0 0-.95-1.02 8.097 8.097 0 0 1-.186-.152.692.692 0 0 1 .023-.208c.208-1.087.201-2.443-.017-3.503-.19-.924-.535-1.658-.98-2.082-.354-.338-.716-.482-1.15-.455-.996.059-1.8 1.205-2.116 3.01a6.805 6.805 0 0 0-.097.726c0 .036-.007.066-.015.066a.96.96 0 0 1-.149-.078A4.857 4.857 0 0 0 12 3.03c-.832 0-1.687.243-2.456.698a.958.958 0 0 1-.148.078c-.008 0-.015-.03-.015-.066a6.71 6.71 0 0 0-.097-.725C8.997 1.392 8.337.319 7.46.048a2.096 2.096 0 0 0-.585-.041Zm.293 1.402c.248.197.523.759.682 1.388.03.113.06.244.069.292.007.047.026.152.041.233.067.365.098.76.102 1.24l.002.475-.12.175-.118.178h-.278c-.324 0-.646.041-.954.124l-.238.06c-.033.007-.038-.003-.057-.144a8.438 8.438 0 0 1 .016-2.323c.124-.788.413-1.501.696-1.711.067-.05.079-.049.157.013zm9.825-.012c.17.126.358.46.498.888.28.854.36 2.028.212 3.145-.019.14-.024.151-.057.144l-.238-.06a3.693 3.693 0 0 0-.954-.124h-.278l-.119-.178-.119-.175.002-.474c.004-.669.066-1.19.214-1.772.157-.623.434-1.185.68-1.382.078-.062.09-.063.159-.012z', label: 'Ollama (local, no key)', kind: 'openai',   model: 'llama3.1', base: 'http://localhost:11434/v1', baseEditable: true, keyOptional: true },
+    opencode:   { name: 'OpenCode (local)', color: '#000000', evenodd: true, icon: 'M16 6H8v12h8V6zm4 16H4V2h16v20z', label: 'OpenCode (local)', kind: 'opencode', model: '', base: 'http://127.0.0.1:49374', baseEditable: true },
     custom:     { name: 'Other API (OpenAI)', mark: '⚙', badge: 'bg-slate-500', label: 'Other OpenAI-compatible API', kind: 'openai', model: '', base: '', baseEditable: true, keyOptional: true }
 };
 
@@ -69,6 +70,9 @@ function normalizeBase(raw) {
     return (raw || '').trim().replace(/\/+$/, '').replace(/\/(chat\/completions|models)$/i, '').replace(/\/+$/, '');
 }
 
+// Providers that talk to a configurable server: OpenAI-compatible APIs and the local OpenCode service.
+function usesBase(p) { return p.kind === 'openai' || p.kind === 'opencode'; }
+
 // Base URL actually used for a provider: fixed for the official APIs, editable for Ollama / "Other API".
 function providerBase(id) {
     const p = PROVIDERS[id];
@@ -105,7 +109,7 @@ function currentCfg() {
 function isConfigured() {
     const c = currentCfg();
     if (!c.model) return false;
-    if (c.kind === 'openai' && !c.base) return false;
+    if (usesBase(c) && !c.base) return false;
     return c.keyOptional || !!c.key;
 }
 
@@ -131,6 +135,12 @@ function stashModalFields() {
     if (PROVIDERS[modalProvider].baseEditable) llm.bases[modalProvider] = normalizeBase(document.getElementById('cfgBase').value);
 }
 
+// OpenCode has no API key: the field takes a pairing code, which is exchanged for a token.
+function renderKeyLabel() {
+    const p = modalProvider && PROVIDERS[modalProvider];
+    document.getElementById('cfgKeyLabelText').textContent = t(p?.kind === 'opencode' ? 'settings.pairingCode' : 'settings.key');
+}
+
 function renderKeyToggleLabel() {
     const hidden = document.getElementById('cfgKey').type === 'password';
     document.getElementById('cfgKeyToggle').textContent = t(hidden ? 'settings.show' : 'settings.hide');
@@ -144,6 +154,7 @@ function fillModalFields() {
     document.getElementById('cfgBaseWrap').classList.toggle('hidden', !p.baseEditable);
     renderBaseWarning();
     document.getElementById('cfgKeyHint').textContent = t(`hint.${modalProvider}`);
+    renderKeyLabel();
     loadModels();
 }
 
@@ -169,7 +180,8 @@ let modelsReqId = 0;
 let modelsTimer = null;
 let modelsStatus = null; // { key, vars } of the text shown under the model field, so it can be re-translated
 const NON_CHAT_MODEL = /embed|whisper|tts|dall-e|moderation|transcribe|realtime|image|audio|rerank/i;
-const MODELS_WARN = ['models.failed', 'models.localDown', 'models.localDownFile', 'models.empty', 'models.badBase'];
+const MODELS_WARN = ['models.failed', 'models.localDown', 'models.localDownFile', 'models.empty', 'models.badBase',
+    'models.opencodeDown', 'models.opencodeBadCode'];
 const MIN_KEY_LENGTH = 8; // while typing/pasting, shorter text is not sent to the provider
 
 // Whether listing models needs a key (local servers and providers with a public catalog do not).
@@ -206,8 +218,21 @@ function modelsRequest(p, key, base) {
     return { url: `${base}/models`, headers: key ? { 'Authorization': `Bearer ${key}` } : {} };
 }
 
+// Free OpenCode models cost nothing per token
+function isFreeOpenCodeModel(m) {
+    return m.providerID === 'opencode' && Array.isArray(m.cost) && m.cost.length > 0 && m.cost.every(c => c.input === 0 && c.output === 0);
+}
+
 function parseModels(p, data) {
     let list;
+    if (p.kind === 'opencode') {
+        // Ids are "provider/model" (as `opencode models` prints them); free models go first
+        list = (data?.data || [])
+            .filter(m => m.enabled !== false && (m.capabilities?.output || ['text']).includes('text'))
+            .map(m => ({ id: `${m.providerID}/${m.id}`, label: m.name || m.id, free: isFreeOpenCodeModel(m) }));
+        list.forEach(m => { if (m.free) m.label += ` · ${t('models.free')}`; });
+        return list.sort((a, b) => (b.free - a.free) || a.id.localeCompare(b.id));
+    }
     if (p.kind === 'gemini') {
         list = (data?.models || [])
             .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
@@ -251,6 +276,52 @@ function onModelSelectChange() {
     }
 }
 
+// fetch that marks connection failures (as opposed to HTTP errors) so callers can give a specific message
+async function fetchNet(url, options) {
+    try {
+        return await fetch(url, options);
+    } catch (netErr) {
+        netErr.network = true;
+        throw netErr;
+    }
+}
+
+// "401 Incorrect API key" style error from a failed HTTP response
+async function httpError(res) {
+    const raw = await res.text().catch(() => '');
+    let detail = raw;
+    try { const j = JSON.parse(raw); detail = j.error?.message || j.message || raw; } catch (e) { /* plain text */ }
+    return new Error(`${res.status} ${String(detail).slice(0, 150)}`);
+}
+
+// OpenCode: the key field holds a token, or a one-time pairing code. It is tried as a token first; if the
+// service answers 401 it is redeemed as a pairing code (GET /auth/connect/<code> -> { token }) and retried.
+async function fetchOpenCodeModels(key, base) {
+    const list = (token) => fetchNet(`${base}/api/model`, { headers: { Authorization: openCodeAuth(token) } });
+    let res = await list(key);
+    let token = null;
+    if (res.status === 401) {
+        const redeemed = await fetchNet(`${base}/auth/connect/${encodeURIComponent(key)}`, { headers: { Accept: 'application/json' } });
+        const body = redeemed.ok ? await redeemed.json().catch(() => null) : null;
+        if (!body?.token) {
+            const err = new Error('pairing code rejected');
+            err.opencodeBadCode = true;
+            throw err;
+        }
+        token = body.token;
+        res = await list(token);
+    }
+    if (!res.ok) throw await httpError(res);
+    return { data: await res.json(), token };
+}
+
+// A pairing code works once: from then on the token takes its place (stored like any other key).
+function adoptOpenCodeToken(token) {
+    llm.keys.opencode = token;
+    persistSettings();
+    if (modalProvider === 'opencode') document.getElementById('cfgKey').value = token;
+}
+
 async function loadModels({ auto = false } = {}) {
     clearTimeout(modelsTimer);
     if (!modalProvider) return;
@@ -263,11 +334,12 @@ async function loadModels({ auto = false } = {}) {
     sel.classList.add('hidden');
     updateModelFields();
 
-    if ((modelsNeedKey(p) && !key) || (p.kind === 'openai' && !base)) {
-        setModelsStatus(p.kind === 'openai' && !base && (key || !modelsNeedKey(p)) ? 'models.enterBase' : 'models.enterKey');
+    if ((modelsNeedKey(p) && !key) || (usesBase(p) && !base)) {
+        setModelsStatus(usesBase(p) && !base && (key || !modelsNeedKey(p)) ? 'models.enterBase'
+            : p.kind === 'opencode' ? 'models.enterCode' : 'models.enterKey');
         return;
     }
-    if (p.kind === 'openai' && baseProblem(base) === 'base.badScheme') {
+    if (usesBase(p) && baseProblem(base) === 'base.badScheme') {
         setModelsStatus('models.badBase');
         return;
     }
@@ -278,26 +350,23 @@ async function loadModels({ auto = false } = {}) {
     }
     setModelsStatus('models.loading');
     try {
-        const req = modelsRequest(p, key, base);
-        let res;
-        try {
-            res = await fetch(req.url, { headers: req.headers });
-        } catch (netErr) {
-            netErr.network = true;
-            throw netErr;
+        let data;
+        if (p.kind === 'opencode') {
+            const result = await fetchOpenCodeModels(key, base);
+            data = result.data;
+            if (result.token) adoptOpenCodeToken(result.token);
+        } else {
+            const req = modelsRequest(p, key, base);
+            const res = await fetchNet(req.url, { headers: req.headers });
+            if (!res.ok) throw await httpError(res);
+            data = await res.json();
         }
-        if (!res.ok) {
-            const raw = await res.text().catch(() => '');
-            let detail = raw;
-            try { const j = JSON.parse(raw); detail = j.error?.message || j.message || raw; } catch (e) { /* plain text */ }
-            throw new Error(`${res.status} ${String(detail).slice(0, 150)}`);
-        }
-        const models = parseModels(p, await res.json());
+        const models = parseModels(p, data);
         if (reqId !== modelsReqId) return; // the user changed provider/key in the meantime
         if (!models.length) { setModelsStatus('models.empty'); return; }
         let current = modelInput.value.trim();
         // Local servers only list what is installed: if the default model is not there, pick one that is
-        if (p.keyOptional && !models.some(m => m.id === current) && (!current || current === (p.model || ''))) {
+        if ((p.keyOptional || p.kind === 'opencode') && !models.some(m => m.id === current) && (!current || current === (p.model || ''))) {
             current = models[0].id;
             modelInput.value = current;
         }
@@ -314,8 +383,10 @@ async function loadModels({ auto = false } = {}) {
         setModelsStatus('models.available', { n: models.length });
     } catch (e) {
         if (reqId !== modelsReqId) return;
+        if (e.opencodeBadCode) setModelsStatus('models.opencodeBadCode');
+        else if (e.network && p.kind === 'opencode') setModelsStatus('models.opencodeDown', { base });
         // Opened from disk (file://) the browser sends `Origin: null`, which Ollama rejects: say so explicitly
-        if (e.network && p.keyOptional) setModelsStatus(window.location.protocol === 'file:' ? 'models.localDownFile' : 'models.localDown', { base });
+        else if (e.network && p.keyOptional) setModelsStatus(window.location.protocol === 'file:' ? 'models.localDownFile' : 'models.localDown', { base });
         else setModelsStatus('models.failed', { error: e.message || t('models.netError') });
     }
 }
@@ -537,6 +608,7 @@ function onLanguageChanged() {
         renderKeyToggleLabel();
         renderModelsStatus();
         renderBaseWarning();
+        renderKeyLabel();
     }
 }
 
@@ -908,8 +980,95 @@ async function fetchWithRetry(req, maxRetries = 3) {
     }
 }
 
+// ---- OpenCode (local service) ----
+// Talks to the user's own OpenCode through its HTTP API: one session per model, and `generate` for plain text.
+// The sessions are created WITHOUT a `permissions` list: with `deny *` the service answers every request with a
+// "free usage limit" error. `generate` does not run the agent loop, so no tools are used anyway.
+const OPENCODE_SESSIONS = 'paperclaro.opencode.sessions.v1';
+
+// The token travels as the password of HTTP Basic auth (user "opencode"); Bearer is rejected.
+function openCodeAuth(token) {
+    const bytes = new TextEncoder().encode(`opencode:${token}`);
+    return 'Basic ' + btoa(String.fromCharCode(...bytes));
+}
+
+// "opencode/big-pickle" -> { providerID: 'opencode', id: 'big-pickle' } (the id itself may contain "/")
+function splitOpenCodeModel(model) {
+    const i = model.indexOf('/');
+    return i > 0 ? { providerID: model.slice(0, i), id: model.slice(i + 1) } : { providerID: 'opencode', id: model };
+}
+
+function readOpenCodeSessions() {
+    try { return JSON.parse(safeStorage('sessionStorage')?.getItem(OPENCODE_SESSIONS) || '{}'); } catch (e) { return {}; }
+}
+
+function writeOpenCodeSessions(map) {
+    safeStorage('sessionStorage')?.setItem(OPENCODE_SESSIONS, JSON.stringify(map));
+}
+
+async function openCodeFetch(cfg, path, init) {
+    const headers = { 'Content-Type': 'application/json', 'Authorization': openCodeAuth(cfg.key) };
+    try {
+        return await fetch(`${cfg.base}${path}`, { ...init, headers });
+    } catch (netErr) {
+        // Only connection failures end up here: any other bug must not be reported as "service not running"
+        throw new Error(t('err.opencodeDown', { base: cfg.base }));
+    }
+}
+
+async function openCodeError(res) {
+    if (res.status === 401) return new Error(t('err.opencodeAuth'));
+    const raw = await res.text().catch(() => '');
+    let detail = raw;
+    try { const j = JSON.parse(raw); detail = j.message || j.error?.message || raw; } catch (e) { /* plain text */ }
+    return new Error(t('err.api', { status: res.status, detail: String(detail).slice(0, 300) }));
+}
+
+async function createOpenCodeSession(cfg) {
+    const res = await openCodeFetch(cfg, '/api/session', {
+        method: 'POST',
+        body: JSON.stringify({ title: 'PaperClaro AI', model: splitOpenCodeModel(cfg.model) })
+    });
+    if (!res.ok) throw await openCodeError(res);
+    const id = (await res.json())?.data?.id;
+    if (!id) throw new Error(t('err.noContent'));
+    return id;
+}
+
+// `generate` takes a single prompt and keeps no history, so the whole conversation is sent every time.
+function flattenConversation(system, messages) {
+    if (messages.length === 1) return `${system}\n\n${messages[0].text}`;
+    const turns = messages.map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.text}`).join('\n\n');
+    return `${system}\n\nConversation so far:\n\n${turns}\n\nReply to the last User message as the Assistant.`;
+}
+
+async function callOpenCode(cfg, system, messages) {
+    const prompt = flattenConversation(system, messages);
+    const cacheKey = `${cfg.base}|${cfg.model}`;
+    for (let attempt = 0; attempt < 2; attempt++) {
+        const sessions = readOpenCodeSessions();
+        // First try the session of this page; if the service forgot it (restart, deleted) make a new one
+        let sessionId = attempt === 0 ? sessions[cacheKey] : null;
+        if (!sessionId) {
+            sessionId = await createOpenCodeSession(cfg);
+            sessions[cacheKey] = sessionId;
+            writeOpenCodeSessions(sessions);
+        }
+        const res = await openCodeFetch(cfg, `/api/session/${encodeURIComponent(sessionId)}/generate`, {
+            method: 'POST',
+            body: JSON.stringify({ prompt })
+        });
+        if (res.status === 404 && attempt === 0) continue;
+        if (!res.ok) throw await openCodeError(res);
+        const data = await res.json();
+        return { text: data?.data?.text || '', sources: [] };
+    }
+    throw new Error(t('err.noContent'));
+}
+
 async function callLLM({ system, messages, search = false }) {
     const cfg = currentCfg();
+    if (cfg.kind === 'opencode') return callOpenCode(cfg, system, messages);
     const req = buildRequest(cfg, system, messages, search && cfg.search);
     const data = await fetchWithRetry(req);
     return parseResponse(cfg, data);
