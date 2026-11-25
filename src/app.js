@@ -189,6 +189,7 @@ function renderModelsStatus() {
         : key === 'models.available' ? 'text-emerald-700' : 'text-slate-500');
     if (key === 'models.available' && sel.options.length) {
         sel.options[0].text = t('models.pick', modelsStatus.vars);
+        sel.options[sel.options.length - 1].text = t('models.other');
     }
 }
 
@@ -228,12 +229,26 @@ function scheduleLoadModels() {
     modelsTimer = setTimeout(() => loadModels({ auto: true }), 600);
 }
 
-// Keeps the dropdown in sync when the model name is typed by hand.
-function syncModelSelect() {
+// One control at a time: the dropdown when the models are listed (its last option, "Other", reveals
+// the text field), or just the text field when there is no list.
+const CUSTOM_MODEL = '__custom__';
+
+function updateModelFields() {
     const sel = document.getElementById('cfgModelSelect');
-    const value = document.getElementById('cfgModel').value.trim();
-    if (!sel.options.length) return;
-    sel.value = value && [...sel.options].some(o => o.value === value) ? value : '';
+    const hasList = !sel.classList.contains('hidden');
+    document.getElementById('cfgModel').classList.toggle('hidden', hasList && sel.value !== CUSTOM_MODEL);
+}
+
+function onModelSelectChange() {
+    const sel = document.getElementById('cfgModelSelect');
+    const input = document.getElementById('cfgModel');
+    if (sel.value === CUSTOM_MODEL) {
+        updateModelFields();
+        input.focus();
+    } else if (sel.value) {
+        input.value = sel.value;
+        updateModelFields();
+    }
 }
 
 async function loadModels({ auto = false } = {}) {
@@ -246,6 +261,7 @@ async function loadModels({ auto = false } = {}) {
     const modelInput = document.getElementById('cfgModel');
     const reqId = ++modelsReqId;
     sel.classList.add('hidden');
+    updateModelFields();
 
     if ((modelsNeedKey(p) && !key) || (p.kind === 'openai' && !base)) {
         setModelsStatus(p.kind === 'openai' && !base && (key || !modelsNeedKey(p)) ? 'models.enterBase' : 'models.enterKey');
@@ -286,10 +302,15 @@ async function loadModels({ auto = false } = {}) {
             modelInput.value = current;
         }
         sel.innerHTML = '';
-        sel.add(new Option('', ''));
+        const placeholder = new Option(t('models.pick', { n: models.length }), '');
+        placeholder.disabled = true;
+        sel.add(placeholder);
         models.forEach(m => sel.add(new Option(m.label && m.label !== m.id ? `${m.id} — ${m.label}` : m.id, m.id)));
-        if (models.some(m => m.id === current)) sel.value = current;
+        sel.add(new Option(t('models.other'), CUSTOM_MODEL));
+        // A listed model is selected; anything else (a name typed by hand) shows the text field
+        sel.value = models.some(m => m.id === current) ? current : (current ? CUSTOM_MODEL : '');
         sel.classList.remove('hidden');
+        updateModelFields();
         setModelsStatus('models.available', { n: models.length });
     } catch (e) {
         if (reqId !== modelsReqId) return;
