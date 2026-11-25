@@ -11,7 +11,7 @@
 const I18N = {
     en: {
         // ---- Providers ----
-        'hint.gemini': 'Get one at aistudio.google.com/apikey',
+        'hint.gemini': 'Free key, no card needed: aistudio.google.com/apikey. On the free plan Google may use your prompts to improve its products: avoid confidential papers.',
         'hint.openai': 'Starts with sk-… (platform.openai.com/api-keys)',
         'hint.anthropic': 'Starts with sk-ant-… (console.anthropic.com)',
         'hint.grok': 'Starts with xai-… (console.x.ai)',
@@ -55,7 +55,10 @@ const I18N = {
         'models.other': 'Other (type a name)…',
         'models.failed': 'Could not load the list ({error}). Type the model name by hand.',
         'models.localDownFile': 'Could not reach {base}. You opened this page as a file (file://), and local servers like Ollama reject that origin. Serve the folder instead, e.g. run "python3 -m http.server 8000" in it and open http://localhost:8000, or start Ollama with OLLAMA_ORIGINS=null.',
-        'models.localDown': 'Could not reach {base}. Check that the server is running and, for Ollama, that OLLAMA_ORIGINS allows this page. You can type the model name by hand.',
+        'models.localDown': 'Could not reach {base}. Check that the server is running and, for Ollama, that OLLAMA_ORIGINS allows this page. If the browser asks, let this page access your local network. You can type the model name by hand.',
+        'models.localOrigin': 'Ollama is running at {base} but it does not accept this page ({origin}). Restart it allowing that origin: OLLAMA_ORIGINS={origin} ollama serve (if Ollama runs as a service or on Windows, set that variable and restart it). You can type the model name by hand.',
+        'provider.localOnly': 'local version only',
+        'provider.localOnlyTitle': 'Only available when you run the app on your own computer.',
         'models.netError': 'network or CORS error',
 
         // ---- Libraries loaded on demand ----
@@ -302,6 +305,8 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'settings.intro': 'Usa tu propia clave de API. Las llamadas van directamente desde tu navegador al proveedor.',
         'settings.close': 'Cerrar',
         'settings.provider': 'Proveedor',
+        'settings.hostedNote': 'OpenCode solo funciona si ejecutas la app en tu equipo. Ollama también funciona aquí cuando permite este sitio (OLLAMA_ORIGINS).',
+        'settings.hostedLink': 'Cómo ejecutarla en local',
         'settings.key': 'Clave de API',
         'settings.model': 'Modelo',
         'settings.loadModels': 'Buscar modelos',
@@ -317,7 +322,7 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'prov.custom.label': 'Otra API compatible con OpenAI',
 
         // ---- Dynamic texts (app.js) ----
-        'hint.gemini': 'Consíguela en aistudio.google.com/apikey',
+        'hint.gemini': 'Clave gratuita, sin tarjeta: aistudio.google.com/apikey. En el plan gratuito Google puede usar tus prompts para mejorar sus productos: evita los papers confidenciales.',
         'hint.openai': 'Empieza por sk-… (platform.openai.com/api-keys)',
         'hint.anthropic': 'Empieza por sk-ant-… (console.anthropic.com)',
         'hint.grok': 'Empieza por xai-… (console.x.ai)',
@@ -359,7 +364,10 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
         'models.other': 'Otro (escribir el nombre)…',
         'models.failed': 'No se pudo cargar la lista ({error}). Escribe el nombre del modelo a mano.',
         'models.localDownFile': 'No se pudo conectar con {base}. Has abierto esta página como archivo (file://) y los servidores locales como Ollama rechazan ese origen. Sirve la carpeta en su lugar, p. ej. ejecuta "python3 -m http.server 8000" en ella y abre http://localhost:8000, o arranca Ollama con OLLAMA_ORIGINS=null.',
-        'models.localDown': 'No se pudo conectar con {base}. Comprueba que el servidor esté en marcha y, en Ollama, que OLLAMA_ORIGINS permita esta página. Puedes escribir el nombre del modelo a mano.',
+        'models.localDown': 'No se pudo conectar con {base}. Comprueba que el servidor esté en marcha y, en Ollama, que OLLAMA_ORIGINS permita esta página. Si el navegador te lo pide, deja que esta página acceda a tu red local. Puedes escribir el nombre del modelo a mano.',
+        'models.localOrigin': 'Ollama está en marcha en {base} pero no acepta esta página ({origin}). Reinícialo permitiendo ese origen: OLLAMA_ORIGINS={origin} ollama serve (si Ollama corre como servicio o en Windows, define esa variable y reinícialo). Puedes escribir el nombre del modelo a mano.',
+        'provider.localOnly': 'solo versión local',
+        'provider.localOnlyTitle': 'Solo disponible si ejecutas la app en tu propio equipo.',
         'models.netError': 'error de red o CORS',
 
         'lib.loadFail': 'No se pudo cargar {name}. Revisa tu conexión.',

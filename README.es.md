@@ -24,6 +24,24 @@ No hace falta compilar nada para usarlo (`dist/styles.css` está versionado). S�
 
 > La búsqueda web al pedir un paper por título solo está disponible con Gemini. Con el resto de proveedores el modelo responde con su propio conocimiento y puede equivocarse con papers poco conocidos: contrasta los datos importantes.
 
+## Pruébalo gratis
+
+Hay una copia en línea en <https://potzon.github.io/paper-claro-ai/>. Sigues necesitando una clave, pero estos proveedores tienen plan gratuito (sin tarjeta; los límites cambian a menudo, consulta cada servicio):
+
+| Proveedor | Clave gratuita | Notas |
+|---|---|---|
+| **Gemini** (el mejor para empezar) | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | Solo modelos Flash. En el plan gratuito Google puede usar tus prompts para mejorar sus productos: evita los papers confidenciales. |
+| **OpenRouter** | [openrouter.ai/keys](https://openrouter.ai/keys) | Modelos que terminan en `:free`, con una cuota diaria pequeña compartida entre ellos. |
+| **Groq** | [console.groq.com/keys](https://console.groq.com/keys) | Límites diarios. El catálogo gratuito cambia: si rechaza el modelo por defecto, elige otro de la lista. |
+
+**OpenCode solo funciona en la versión local** (ver Uso), porque solo acepta páginas servidas desde `localhost`: en la copia en línea aparece en gris. **Ollama sí funciona en la copia en línea**, pero antes debe permitir ese sitio. Si responde y la rechaza, la app muestra el comando exacto; por ejemplo:
+
+```bash
+OLLAMA_ORIGINS=https://potzon.github.io ollama serve
+```
+
+Si Ollama corre como servicio, define `OLLAMA_ORIGINS` ahí (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://potzon.github.io"`; Windows: una variable de entorno de usuario) y reinícialo. Chrome también puede pedirte permiso para acceder a tu red local.
+
 ## ¿Sin clave de API? Usa la skill
 
 Una suscripción Claude Pro o Max no incluye clave de API, así que la app web no puede usarla. Para ese caso el repositorio incluye los mismos prompts como [Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) en [`skill/paperclaro/`](skill/paperclaro/), que funciona dentro de Claude Code o claude.ai con tu suscripción:

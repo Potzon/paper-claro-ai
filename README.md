@@ -24,6 +24,24 @@ Nothing needs to be built to run it (`dist/styles.css` is committed). It does ne
 
 > Web search when asking for a paper by title is only available with Gemini. With the other providers the model answers from its own knowledge and may get lesser-known papers wrong: double-check important details.
 
+## Try it for free
+
+There is an online copy at <https://potzon.github.io/paper-claro-ai/>. You still need a key, but these providers have a free plan (no card needed; limits change often, check each service):
+
+| Provider | Free key | Notes |
+|---|---|---|
+| **Gemini** (best to start) | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | Flash models only. On the free plan Google may use your prompts to improve its products: avoid confidential papers. |
+| **OpenRouter** | [openrouter.ai/keys](https://openrouter.ai/keys) | Models ending in `:free`, with a small daily quota shared between them. |
+| **Groq** | [console.groq.com/keys](https://console.groq.com/keys) | Daily limits. The free catalog changes: if the default model is rejected, pick another one from the list. |
+
+**OpenCode only works in the local version** (see Usage), because it accepts pages served from `localhost` only: in the online copy it appears greyed out. **Ollama also works in the online copy**, but it must allow that site first. If it answers and refuses, the app shows the exact command; for example:
+
+```bash
+OLLAMA_ORIGINS=https://potzon.github.io ollama serve
+```
+
+If Ollama runs as a service, set `OLLAMA_ORIGINS` there (Linux: `sudo systemctl edit ollama`; macOS: `launchctl setenv OLLAMA_ORIGINS "https://potzon.github.io"`; Windows: a user environment variable) and restart it. Chrome may also ask for permission to access your local network.
+
 ## No API key? Use the skill
 
 A Claude Pro or Max subscription does not include an API key, so the web app cannot use it. For that case the repository ships the same prompts as an [Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) in [`skill/paperclaro/`](skill/paperclaro/), which runs inside Claude Code or claude.ai with your subscription:
