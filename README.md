@@ -6,6 +6,10 @@ AI explainer for scientific papers. Search for a paper by title, paste its abstr
 
 It is a 100% client-side app: HTML, CSS and JavaScript, with no server and no accounts. **You bring your own API key.**
 
+![PaperClaro AI: choosing Ollama, pasting an abstract and getting a simple-level explanation](docs/demo.gif)
+
+*Real run with a local model (Ollama, `qwen3.5:4b`).*
+
 ## Features
 
 - Three ways to provide a paper: title or topic, pasted text, or a PDF/TXT file (PDFs are read in your browser).

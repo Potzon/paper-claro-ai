@@ -6,6 +6,10 @@ Explicador de papers científicos con IA. Busca un paper por título, pega su ab
 
 Es una aplicación 100 % de cliente: HTML, CSS y JavaScript, sin servidor ni cuentas. **Tú pones tu propia clave de API.**
 
+![PaperClaro AI: elegir Ollama, pegar un resumen y obtener una explicación de nivel simple](docs/demo.gif)
+
+*Ejecución real con un modelo local (Ollama, `qwen3.5:4b`).*
+
 ## Características
 
 - Tres formas de entrada: título o tema, texto pegado o PDF/TXT (el PDF se lee en tu navegador).

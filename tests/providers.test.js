@@ -157,6 +157,7 @@ describe('request formats', () => {
             assert.equal(call.body.messages[0].role, 'system');
             assert.equal(call.body.messages[1].role, 'user');
             assert.equal(call.body.tools, undefined, 'web search is Gemini-only');
+            assert.equal('reasoning_effort' in call.body, false, 'only Ollama gets it: other APIs reject parameters they do not know');
         });
     }
 
@@ -168,6 +169,25 @@ describe('request formats', () => {
         assert.equal(call.url, 'http://localhost:11434/v1/chat/completions');
         assert.equal('Authorization' in call.headers, false);
         assert.equal(call.body.model, 'qwen3.8:latest');
+    });
+
+    it('Ollama: asks reasoning models not to think, in the explanation and in the follow-ups', async () => {
+        const app = await boot();
+        app.run("llm.provider = 'ollama'; llm.models.ollama = 'qwen3.8:latest'");
+        await analyze(app);
+        assert.equal(app.lastCall('/chat/completions').body.reasoning_effort, 'none');
+        app.calls.length = 0;
+        app.$('chatInput').value = 'What is the main result?';
+        await app.window.handleChatSubmit({ preventDefault() {} });
+        await app.settle();
+        assert.equal(app.lastCall('/chat/completions').body.reasoning_effort, 'none');
+    });
+
+    it('other API pointing at a local server does not get reasoning_effort', async () => {
+        const app = await boot();
+        app.run("llm.provider = 'custom'; llm.bases.custom = 'http://localhost:1234/v1'; llm.models.custom = 'm'");
+        await analyze(app);
+        assert.equal('reasoning_effort' in app.lastCall('/chat/completions').body, false);
     });
 
     it('other API: uses the base URL typed by the user', async () => {

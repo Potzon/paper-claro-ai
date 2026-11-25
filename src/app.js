@@ -961,17 +961,17 @@ function buildRequest(cfg, system, messages, search) {
     // openai-compatible
     const headers = { 'Content-Type': 'application/json' };
     if (cfg.key) headers['Authorization'] = `Bearer ${cfg.key}`;
-    return {
-        url: `${cfg.base}/chat/completions`,
-        headers,
-        body: {
-            model: cfg.model,
-            messages: [
-                { role: 'system', content: system },
-                ...messages.map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text }))
-            ]
-        }
+    const body = {
+        model: cfg.model,
+        messages: [
+            { role: 'system', content: system },
+            ...messages.map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text }))
+        ]
     };
+    // Ollama turns thinking on by default for reasoning models: on a CPU they can spend minutes (or the whole
+    // token budget) thinking before the first word of the explanation. "none" makes them answer directly.
+    if (cfg.id === 'ollama') body.reasoning_effort = 'none';
+    return { url: `${cfg.base}/chat/completions`, headers, body };
 }
 
 function parseResponse(cfg, data) {
