@@ -205,7 +205,7 @@ Answer the user's question relying rigorously on the scientific paper analyzed i
 
     es: {
         // ---- Static texts (index.html) ----
-        'meta.title': 'PaperClaro AI — Explicador Inteligente de Papers Científicos',
+        'meta.title': 'PaperClaro AI',
         'nav.openHistory': 'Abrir historial de papers',
         'brand.html': 'PaperClaro <span class="text-indigo-700">AI</span>',
         'brand.badge': 'Lectura Científica',
